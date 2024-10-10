@@ -29,18 +29,18 @@ router.get("/CategoryList", CategoryController.CategoryList)
 
 
 // Cart
-router.post("/CreateCart", CartListController.CreateCart)
-router.get("/ReadCartList", CartListController.ReadCartList)
-router.post("/UpdateCart", CartListController.UpdateCart)
-router.post("/RemoveCart", CartListController.RemoveCart)
+router.post("/CreateCart",AuthMiddleware,CartListController.CreateCart)
+router.get("/ReadCartList",AuthMiddleware,CartListController.ReadCartList)
+router.post("/UpdateCart",AuthMiddleware,CartListController.UpdateCart)
+router.post("/RemoveCart",AuthMiddleware,CartListController.RemoveCart)
 
 // Review
 router.post("/CreateProductReview",ProductController.CreateProductReview)
 
 // Wish
-router.post("/CreateWish", WishListController.CreateWish)
-router.get("/ReadWishList", WishListController.ReadWishList)
-router.post("/RemoveWish", WishListController.RemoveWish)
+router.post("/CreateWish",AuthMiddleware,WishListController.CreateWish)
+router.get("/ReadWishList",AuthMiddleware,WishListController.ReadWishList)
+router.post("/RemoveWish",AuthMiddleware,WishListController.RemoveWish)
 
 
 // Product
