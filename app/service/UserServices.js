@@ -54,12 +54,12 @@ import { TokenEncode } from "../utility/tokenUtility.js";
 
 
 
-    export const CreateUserProfile=async (req)=>{
+    export const CreateProfileService=async (req)=>{
     
             try {
                 let user_id=req.headers.user_id;
                 let reqBody=req.body;
-                reqBody.user_id=user_id;
+                reqBody.userID=user_id;
                 await  ProfileModel.updateOne({userID:user_id},{$set:reqBody},{upsert:true})
                 return {status:"success",message:"profile save Successfuily"};
             }catch (e){
@@ -72,7 +72,7 @@ import { TokenEncode } from "../utility/tokenUtility.js";
           
 
 
-    export const UpdateUserProfile=async (req)=>{
+    export const UpdateProfileService=async (req)=>{
         try {
             let user_id=req.headers.user_id;
             let reqBody=req.body;
@@ -89,7 +89,7 @@ import { TokenEncode } from "../utility/tokenUtility.js";
 
           
           
-    export const ReadUserProfile=async (req)=>{
+    export const ReadProfileService=async (req)=>{
         try {
             let user_id=req.headers.user_id;
             let data= await ProfileModel.findOne({userID:user_id})
