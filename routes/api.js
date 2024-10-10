@@ -1,0 +1,68 @@
+import express from "express";
+const router = express.Router();
+import * as UsersController from "../app/controllers/UsersController.js";
+import * as BrandController from "../app/controllers/BrandController.js";
+import * as CartListController from "../app/controllers/CartListController.js";
+import * as CategoryController from "../app/controllers/CategoryController.js";
+import * as InvoiceController from "../app/controllers/InvoiceController.js";
+import * as ProductController from "../app/controllers/ProductController.js";
+import * as WishListController from "../app/controllers/WishListController.js";
+import {ProductListByBrand} from "../app/controllers/ProductController.js";
+import AuthMiddleware from "../app/middlewares/AuthMiddleware.js";
+
+
+
+// Users
+router.post("/Login", UsersController.Login)
+router.post("/VerifyLogin", UsersController.VerifyLogin)
+router.post("/CreateUserProfile",AuthMiddleware, UsersController.CreateUserProfile)
+router.post("/UpdateUserProfile",AuthMiddleware, UsersController.UpdateUserProfile)
+router.get("/ReadUserProfile",AuthMiddleware, UsersController.ReadUserProfile)
+
+
+// Brands
+router.get("/BrandList", BrandController.BrandList)
+
+
+// Categories
+router.get("/CategoryList", CategoryController.CategoryList)
+
+
+// Cart
+router.post("/CreateCart", CartListController.CreateCart)
+router.get("/ReadCartList", CartListController.ReadCartList)
+router.post("/UpdateCart", CartListController.UpdateCart)
+router.post("/RemoveCart", CartListController.RemoveCart)
+
+// Review
+router.post("/CreateProductReview",ProductController.CreateProductReview)
+
+// Wish
+router.post("/CreateWish", WishListController.CreateWish)
+router.get("/ReadWishList", WishListController.ReadWishList)
+router.post("/RemoveWish", WishListController.RemoveWish)
+
+
+// Product
+router.get("/ProductListBySlider",ProductController.ProductListBySlider)
+router.get("/ProductListByCategory/:CategoryID",ProductController.ProductListByCategory)
+router.get("/ProductListByRemark/:Remark",ProductController.ProductListByRemark)
+router.get("/ProductListByBrand/:BrandID",ProductController.ProductListByBrand)
+router.get("/ProductDetailsID/:ProductID",ProductController.ProductDetailsID)
+router.get("/ProductListByKeyword/:keyword",ProductController.ProductListByKeyword)
+router.get("/ProductReviewListByID/:ProductID",ProductController.ProductReviewListByID)
+
+
+
+//Invoice
+
+router.post("/CreateInvoice",InvoiceController.CreateInvoice)
+router.get("/ReadInvoiceList",InvoiceController.ReadInvoiceList)
+router.get("/ReadInvoiceDetails",InvoiceController.ReadInvoiceDetails)
+
+
+
+
+export default router;
+
+
