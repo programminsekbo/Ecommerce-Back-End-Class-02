@@ -1,4 +1,7 @@
-import { CreateWishService,RemoveWishService } from "../service/WishListService.js";
+import { CreateWishService,RemoveWishService,ReadWishService } from "../service/WishListService.js";
+
+
+
 
 
 export const CreateWish=async(req,res)=>{
@@ -7,7 +10,7 @@ export const CreateWish=async(req,res)=>{
 }
 
 export const ReadWishList=async(req,res)=>{
-    let result=await LoginService(req)
+    let result=await ReadWishService(req)
     return res.json(result);
 }
 
