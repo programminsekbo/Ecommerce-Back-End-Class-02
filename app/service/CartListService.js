@@ -65,13 +65,11 @@ export const RemoveCartService= async (req) => {
 
     try{
        let user_id=req.headers['user_id']
-       let {id}=req.body;
-       let postJSON={
-       _id:id,
-        userID:user_id
-       }
 
-       await  CartModel.deleteOne(postJSON)
+       let body=req.body;
+       body.userID = user_id;
+
+       await  CartModel.deleteOne(body)
        
        
         return {status:"success",message:"Remove Successfully"}

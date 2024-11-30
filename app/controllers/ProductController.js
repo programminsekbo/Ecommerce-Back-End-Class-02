@@ -2,6 +2,7 @@ import {
     DetailsService,
     ListByBrandService,
     ListByCategoryService,
+    ListByFilterService,
     ListByKeywordService,
     ListByRemarkService,
     ReviewListService,
@@ -68,6 +69,10 @@ export const ProductReviewListByID=async (req,res)=>{
 
 
 
+export const ProductListByFilter=async (req,res)=>{
+    let result=await  ListByFilterService(req)
+    return res.json(result)
+}
 
 
 
